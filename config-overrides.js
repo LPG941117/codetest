@@ -5,8 +5,7 @@ module.exports = function override(config) {
     ...config.resolve,
     alias: {
       ...config.alias,
-      'services': path.resolve(__dirname, 'src/shared/services'),
-      'interfaces': path.resolve(__dirname, 'src/shared/interfaces')
+      '@': path.resolve(__dirname, 'src'),
     },
   };
 
