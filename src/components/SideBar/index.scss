@@ -1,7 +1,8 @@
 $arrowIcon: #7D7F83;
+$weatherText: #ACB3BA;
 $accordionHeadline:#B2B9C2;
 $accordionBackground: #141D28;
-$accordionBorder: #0d0d0e;
+$accordionBorder: #252f38;
 $routeBig: #ACB3BA;
 $routeSmall: #586068;
 $rampA: #3EDBD2;
@@ -9,18 +10,126 @@ $rampB: #45DAD2;
 $rampC: #A7E5E0;
 $background: #0d0d0e;
 
+body {
+	color: #ffffff;
+}
 
-
-.content  {
-	height: 1000px;
+.button {
+	background-color: $background;
+	color: #ffffff;
 }
 
 .spaceBetweenContainer {
 	display: flex;
 	justify-content: space-between;
+
 }
 
+//sidebar
 .sidebar {
 	background-color: $background;
-    width: 600px;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	right: 0;
+	transition: 550ms;
+
+	.fiChevrons {
+		margin-top: 15px;
+		&:nth-child(1){  
+			font-size: 33px;
+			color: $arrowIcon;
+			position: relative;
+			left: 5%;
+		}
+	}
+	
+	.weatherContainer {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		margin-left: 25px;
+		margin-right: 25px;
+
+		.detailContainer {
+			text-align: center;
+			.city {
+				font-weight: 100;
+				color: $weatherText;
+				font-size: 15px;
+			}
+			.temperature {
+				font-weight: 300;
+				font-size: 45px;
+			}
+			.date {
+				font-weight: 100;
+				color: $weatherText;
+				font-size: 12px;
+				:nth-child(1) {
+					margin-right: 7px;
+				}
+			}
+		}
+	
+		.wiDayCloudy {
+			margin-top: 20px;
+			font-size: 125px;
+			transform: scaleX(-1);
+		}
+	}
+
+	.weatherTable {
+		margin: auto;
+		width: 230px;
+		margin-bottom: 40px;
+		td {
+			padding: 4px;
+		}
+		tr > :nth-child(1) {
+			font-weight: 100;
+			color: $weatherText;
+			font-size: 15px;
+		}
+
+		tr > :nth-child(2) > span{
+			font-weight: 100;
+			font-size: 15px;
+			color: $weatherText;
+		}
+	}
+}
+
+.visibleSidebar {
+	right: 0;
+}
+
+.invisibleSidebar {
+	right: -100%;
+}
+
+// accordion container
+.accordionContainer {
+	background-color: $accordionBackground;
+	border: 1.8px solid $accordionBorder;
+	border-radius: 1%;
+	width: 240px;
+	margin: auto;
+	.headline {
+		border-bottom: 1.8px solid $accordionBorder;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 23px;
+		padding: 7px;
+		h3 {
+			color: $accordionHeadline;
+			font-weight: 400;
+			font-size: 15px;
+		}
+		:nth-child(2) {
+			color: $arrowIcon;
+			font-size: 24px;
+		}
+	}
 }

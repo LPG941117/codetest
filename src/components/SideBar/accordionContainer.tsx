@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Accordion, Icon } from 'semantic-ui-react';
 import './index.scss';
-
+import { FiChevronDown, FiChevronLeft } from "react-icons/fi";
 
 /**
  * @description HOC: to share common functionalities that related to shopping carts,
@@ -23,20 +22,12 @@ const AccordionContainer: React.FC<AccordionContainerProps> = props => {
 	}
 
 	return (
-		<div>
-			<Accordion>
-				<Accordion.Title
-					active={true}
-					index={0}
-					onClick={handleClick}
-				>
-					{headline}
-					<Icon name={isDroppedDown? 'angle down' : 'angle left'} />
-				</Accordion.Title>
-				<Accordion.Content active={isDroppedDown}>
-					{wrappedContent()}
-				</Accordion.Content>
-			</Accordion>
+		<div className='accordionContainer'>
+			<div className='headline' onClick={handleClick}>
+				<h3>{headline}</h3>
+				{isDroppedDown? <FiChevronDown /> : <FiChevronLeft />}
+			</div>
+			{wrappedContent()}
 		</div>
 	)
 }

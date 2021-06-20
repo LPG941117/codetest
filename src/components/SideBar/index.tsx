@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { IDelayedRoute } from '@/interfaces/delayRoute';
 import { IWeather } from '@/interfaces/weather';
+import classNames from 'classnames';
 import { headlines } from '@/constants/headlines';
 import AccordionContainer from './accordionContainer';
+import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
+import { WiDayCloudy } from "react-icons/wi";
+import { CgSun } from "react-icons/cg";
 import './index.scss';
-import {
-	Icon,
-	Menu,
-	Segment,
-	Sidebar,
-	Table,
-	Button,
-} from 'semantic-ui-react';
 
 
 /**
@@ -37,53 +32,39 @@ const SideBar: React.FC<SideBarProps> = ({
 }) => {
 	const [visible, setVisible] = useState(true);
 
-	const SidebarNav = styled.nav`
-	background: #15171c;
-	width: 250px;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	position: fixed;
-	top: 0;
-	left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
-	transition: 350ms;
-	z-index: 10;
-	`;
 
 	const renderWeather = () => {
 		return (
 			<div>
-				<div>
-					<div>
-						<h3>{weather?.city}</h3>
-						<h2>{weather?.temperature}&deg;</h2>
-						<h3><span>{weather?.date}</span><span>{weather?.time}</span></h3>
+				<div className='weatherContainer'>
+					<div className='detailContainer'>
+						<div className='city'>{weather?.city}</div>
+						<div className='temperature'>{weather?.temperature}&deg;</div>
+						<div className='date'><span>{weather?.date}</span> <span>{weather?.time}</span></div>
 					</div>
-					<Icon name='home'/>
+					<WiDayCloudy className='wiDayCloudy'/>
 				</div>
-				{/* <Table>
-					<Table.Body>
-						<Table.Row>
-							<Table.Cell>{headlines.humidity}</Table.Cell>
-							<Table.Cell>{weather?.humidity}</Table.Cell>
-						</Table.Row>
-						<Table.Row>
-							<Table.Cell>{headlines.chanceOfRain}</Table.Cell>
-							<Table.Cell>{weather?.chanceOfRain}</Table.Cell>
-						</Table.Row>
-						<Table.Row>
-							<Table.Cell>{headlines.wind}</Table.Cell>
-							<Table.Cell>{weather?.wind}</Table.Cell>
-						</Table.Row>
-						<Table.Row>
-							<Table.Cell>{headlines.tomottow}</Table.Cell>
-							<Table.Cell>
-								{weather?.tomorrow}
-								<Icon name='sun'/>
-							</Table.Cell>
-						</Table.Row>
-					</Table.Body>
-				</Table> */}
+				<table className='weatherTable'>
+					<tr>
+						<td>{headlines.humidity}</td>
+						<td>{weather?.humidity}</td>
+					</tr>
+					<tr>
+						<td>{headlines.chanceOfRain}</td>
+						<td>{weather?.chanceOfRain}</td>
+					</tr>
+					<tr>
+						<td>{headlines.wind}</td>
+						<td>{weather?.wind} <span>kmh</span></td>
+					</tr>
+					<tr>
+						<td>{headlines.tomottow}</td>
+						<td>
+							{weather?.tomorrow}&deg;{'  '} 
+							<CgSun />
+						</td>
+					</tr>
+				</table>
 			</div>
 		)
 	}
@@ -94,7 +75,7 @@ const SideBar: React.FC<SideBarProps> = ({
 				<div key={index}>
 					<div>
 						<div>
-							<Icon name='circle' />
+							
 							{delayedRoute.routes[0]}
 						</div>
 						<div>
@@ -103,7 +84,6 @@ const SideBar: React.FC<SideBarProps> = ({
 					</div>
 					<div>
 						<div>
-							<Icon name='arrow down' />
 							<div>
 								{delayedRoute.routes[1]}
 								{delayedRoute.routes[2]}
@@ -115,8 +95,7 @@ const SideBar: React.FC<SideBarProps> = ({
 					</div>
 				</div>
 			)
-		}
-		)
+		})
 
 		return(
 			<div>
@@ -127,35 +106,24 @@ const SideBar: React.FC<SideBarProps> = ({
 		
 	return (
 		<div>
-			{/* <Sidebar.Pushable as={Segment} >
-				<Sidebar
-					as={Menu}
-					animation='overlay'
-					icon='labeled'
-					direction='right'
-					onHide={() => setVisible(false)}
-					vertical
-					visible={visible}
-				>
-					<Icon name={visible ? 'angle double left' : 'angle double right'}/>
-					{weather && renderWeather()}
-					{delayedRoutes && <AccordionContainer 
-						headline={headlines.delayedRoutes}
-						wrappedContent={renderDelayedRouters}
-					/>}
-					{rumps && <Menu.Item as='a'>
-						<Icon name='camera' />
-						rumps
-					</Menu.Item>}
-				</Sidebar>
-	
-				<Sidebar.Pusher dimmed={visible} className='content'>
-						<Button onClick={() => setVisible(!visible)}>
-							{visible ? 'close the sidebar' : 'open the sidebar'}
-						</Button>
-		
-				</Sidebar.Pusher>
-			</Sidebar.Pushable> */}
+			<button onClick={()=> {setVisible(!visible)}} className='button' >
+				{!visible? 'show sidebar' : 'close sidebar'}
+			</button>
+			<div className={classNames('sidebar', 
+				{
+					'visibleSidebar': visible,
+					'invisibleSidebar': !visible
+				}
+			)} >
+				<div className='fiChevrons' onClick = {()=> {setVisible(!visible)}}>
+					{visible? <FiChevronsRight /> : <FiChevronsLeft />}
+				</div>
+				{weather && renderWeather()}
+				{delayedRoutes && <AccordionContainer 
+					headline={headlines.delayedRoutes}
+					wrappedContent={renderDelayedRouters}
+				/>}
+			</div>
 		</div>
 	)
 }
