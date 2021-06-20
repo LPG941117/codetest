@@ -1,4 +1,15 @@
-$background: red;
+$arrowIcon: #7D7F83;
+$accordionHeadline:#B2B9C2;
+$accordionBackground: #141D28;
+$accordionBorder: #0d0d0e;
+$routeBig: #ACB3BA;
+$routeSmall: #586068;
+$rampA: #3EDBD2;
+$rampB: #45DAD2;
+$rampC: #A7E5E0;
+$background: #0d0d0e;
+
+
 
 .content  {
 	height: 1000px;
@@ -7,11 +18,4 @@ $background: red;
 .spaceBetweenContainer {
 	display: flex;
 	justify-content: space-between;
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-.menu {
-	font-family: 'Roboto';
 }

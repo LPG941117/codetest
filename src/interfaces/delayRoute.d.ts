@@ -1,6 +1,6 @@
 export enum EDelayType {
 	BUSY = '#FF0000',
-	MEDIUM = '#FFFF00',
+	MEDIUM = '#FFD403',
 }
 
 export interface IDelayedRoute {
