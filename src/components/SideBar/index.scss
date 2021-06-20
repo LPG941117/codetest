@@ -1,0 +1,17 @@
+$background: red;
+
+.content  {
+	height: 1000px;
+}
+
+.spaceBetweenContainer {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.menu {
+	font-family: 'Roboto';
+}
