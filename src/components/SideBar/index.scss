@@ -19,12 +19,6 @@ body {
 	color: #ffffff;
 }
 
-.spaceBetweenContainer {
-	display: flex;
-	justify-content: space-between;
-
-}
-
 //sidebar
 .sidebar {
 	background-color: $background;
@@ -116,7 +110,6 @@ body {
 	width: 240px;
 	margin: auto;
 	.headline {
-		border-bottom: 1.8px solid $accordionBorder;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -130,6 +123,62 @@ body {
 		:nth-child(2) {
 			color: $arrowIcon;
 			font-size: 24px;
+		}
+	}
+}
+
+.delayedRoute{
+	padding: 10px;
+	border-top: 1.8px solid $accordionBorder;
+	.firstRow {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.leftElement {
+			display: flex;
+			align-items: center;
+			:nth-child(1) {
+				font-size: 9px;
+				margin-right: 10px;
+			}
+			:nth-child(2) {
+				font-size: 15px;
+				color: $routeBig;
+				font-weight: 400;
+			}
+		}
+		.rightElement {
+			color: $routeSmall;
+			font-size: 11px;
+		}
+	}
+	.secondRow {
+		margin-top: 5px;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		.leftElement {
+			display: flex;
+			align-items: center;
+			.arrowDown {
+				font-size: 15px;
+				color: $accordionHeadline;
+				position: relative;
+				left: -2%;
+				margin-right: 5px;
+			}
+			.routeSmall > div{
+				color: $routeSmall;
+				font-size: 12px;
+			}
+		}
+		.rightElement {
+			font-size: 21px;
+			span {
+				font-size: 12px;
+				font-weight: 100;
+				color: $accordionHeadline;
+			}
 		}
 	}
 }

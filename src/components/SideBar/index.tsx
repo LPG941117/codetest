@@ -3,9 +3,12 @@ import { IDelayedRoute } from '@/interfaces/delayRoute';
 import { IWeather } from '@/interfaces/weather';
 import classNames from 'classnames';
 import { headlines } from '@/constants/headlines';
+import { EDelayType } from '@/constants/delayRoutes';
 import AccordionContainer from './accordionContainer';
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 import { WiDayCloudy } from "react-icons/wi";
+import { HiArrowNarrowDown } from "react-icons/hi";
+import { BsFillCircleFill } from "react-icons/bs";
 import { CgSun } from "react-icons/cg";
 import './index.scss';
 
@@ -72,25 +75,26 @@ const SideBar: React.FC<SideBarProps> = ({
 	const renderDelayedRouters = () => {
 		const content = delayedRoutes?.map((delayedRoute, index) => {
 			return(
-				<div key={index}>
-					<div>
-						<div>
-							
-							{delayedRoute.routes[0]}
+				<div key={index} className='delayedRoute'>
+					<div className='firstRow'>
+						<div className='leftElement'>
+							<BsFillCircleFill color={index > 1 ? EDelayType.MEDIUM : EDelayType.BUSY}/>
+							<div>{delayedRoute.routes[0]}</div>
 						</div>
-						<div>
-							{delayedRoute.distance}
+						<div className='rightElement'>
+							{delayedRoute.distance}km
 						</div>
 					</div>
-					<div>
-						<div>
-							<div>
-								{delayedRoute.routes[1]}
-								{delayedRoute.routes[2]}
+					<div className='secondRow'>
+						<div className='leftElement'>
+							<HiArrowNarrowDown className='arrowDown' />
+							<div className='routeSmall'>
+								<div>{delayedRoute.routes[1]}</div>
+								<div>{delayedRoute.routes[2]}</div>
 							</div>
 						</div>
-						<div>
-							{delayedRoute.time + 'min'}
+						<div className='rightElement'>
+							{delayedRoute.time}<span>min</span>
 						</div>
 					</div>
 				</div>

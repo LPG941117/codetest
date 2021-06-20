@@ -27,7 +27,7 @@ const AccordionContainer: React.FC<AccordionContainerProps> = props => {
 				<h3>{headline}</h3>
 				{isDroppedDown? <FiChevronDown /> : <FiChevronLeft />}
 			</div>
-			{wrappedContent()}
+			{isDroppedDown && wrappedContent()}
 		</div>
 	)
 }

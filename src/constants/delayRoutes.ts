@@ -6,13 +6,13 @@ import { IDelayedRoute } from '@/interfaces/delayRoute';
 export const DELAYED_ROUTES: Array<IDelayedRoute> = [
 	{
 		type: "danger",
-		routes: ["Monash Fwy Out", "Kings Way", "Eastlink"],
+		routes: ["Monash Fwy Out", "Kings Way", "EastLink"],
 		distance: 13,
 		time: 45,
 	},
 	{
 		type: "danger",
-		routes: ["Monash Fwy Out", "Kings Way", "Eastlink"],
+		routes: ["Monash Fwy Out", "Kings Way", "EastLink"],
 		distance: 15,
 		time: 28,
 	},
@@ -29,3 +29,9 @@ export const DELAYED_ROUTES: Array<IDelayedRoute> = [
 		time: 25,
 	}
 ]
+
+export enum EDelayType {
+	BUSY = '#FF0000',
+	MEDIUM = '#FFD403',
+}
+
