@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { headlines } from '@/constants/headlines';
 import { EDelayType } from '@/constants/delayRoutes';
 import AccordionContainer from './accordionContainer';
+import RampChart from './rampChart';
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi";
 import { WiDayCloudy } from "react-icons/wi";
 import { HiArrowNarrowDown } from "react-icons/hi";
@@ -17,19 +18,16 @@ import './index.scss';
  * @description A sidebar that used for the showing weather information, delayed routes and ramp content
  * @param {Array<IDelayedRoute>} delayedRoutes an array of delayed routes info
  * @param {IWeather} weather information of weather today
- * @param {array<number>} ramps an Array of ramps
  */
 
 interface SideBarProps {
 	delayedRoutes?: Array<IDelayedRoute>;
 	weather?: IWeather;
-	ramps?: string;
 }
 
 const SideBar: React.FC<SideBarProps> = ({
 	delayedRoutes,
 	weather,
-	ramps
 }) => {
 	const [visible, setVisible] = useState(true);
 
@@ -124,6 +122,10 @@ const SideBar: React.FC<SideBarProps> = ({
 				{delayedRoutes && <AccordionContainer 
 					headline={headlines.delayedRoutes}
 					wrappedContent={renderDelayedRouters}
+				/>}
+				{<AccordionContainer 
+					headline={headlines.rampChart}
+					wrappedContent={RampChart}
 				/>}
 			</div>
 		</div>

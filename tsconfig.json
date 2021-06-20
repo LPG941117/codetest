@@ -20,7 +20,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./",
-    "noImplicitThis": false
+    "noImplicitAny": false
   },
   "extends": "./tsconfig.paths.json",
   "include": [

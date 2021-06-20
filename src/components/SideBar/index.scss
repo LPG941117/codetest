@@ -109,6 +109,7 @@ body {
 	border-radius: 1%;
 	width: 240px;
 	margin: auto;
+	margin-bottom: 20px;
 	.headline {
 		display: flex;
 		justify-content: space-between;
@@ -181,4 +182,15 @@ body {
 			}
 		}
 	}
+}
+
+//pie chart
+.pieChart {
+	border-top: 1.8px solid $accordionBorder;
+	padding-bottom: 15px;
+}
+.algorithm {
+	color: $accordionHeadline;
+	font-size: 15px;
+	margin: 20px;
 }
