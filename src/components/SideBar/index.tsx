@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { IDelayedRoute } from '@/interfaces/delayRoute';
 import { IWeather } from '@/interfaces/weather';
 import { headlines } from '@/constants/headlines';
@@ -36,6 +37,19 @@ const SideBar: React.FC<SideBarProps> = ({
 }) => {
 	const [visible, setVisible] = useState(true);
 
+	const SidebarNav = styled.nav`
+	background: #15171c;
+	width: 250px;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+	transition: 350ms;
+	z-index: 10;
+	`;
+
 	const renderWeather = () => {
 		return (
 			<div>
@@ -47,7 +61,7 @@ const SideBar: React.FC<SideBarProps> = ({
 					</div>
 					<Icon name='home'/>
 				</div>
-				<Table>
+				{/* <Table>
 					<Table.Body>
 						<Table.Row>
 							<Table.Cell>{headlines.humidity}</Table.Cell>
@@ -69,7 +83,7 @@ const SideBar: React.FC<SideBarProps> = ({
 							</Table.Cell>
 						</Table.Row>
 					</Table.Body>
-				</Table>
+				</Table> */}
 			</div>
 		)
 	}
@@ -113,7 +127,7 @@ const SideBar: React.FC<SideBarProps> = ({
 		
 	return (
 		<div>
-			<Sidebar.Pushable as={Segment}>
+			{/* <Sidebar.Pushable as={Segment} >
 				<Sidebar
 					as={Menu}
 					animation='overlay'
@@ -122,8 +136,6 @@ const SideBar: React.FC<SideBarProps> = ({
 					onHide={() => setVisible(false)}
 					vertical
 					visible={visible}
-					width='thin'
-					className='menu'
 				>
 					<Icon name={visible ? 'angle double left' : 'angle double right'}/>
 					{weather && renderWeather()}
@@ -143,7 +155,7 @@ const SideBar: React.FC<SideBarProps> = ({
 						</Button>
 		
 				</Sidebar.Pusher>
-			</Sidebar.Pushable>
+			</Sidebar.Pushable> */}
 		</div>
 	)
 }

@@ -19,3 +19,8 @@ $background: #0d0d0e;
 	display: flex;
 	justify-content: space-between;
 }
+
+.sidebar {
+	background-color: $background;
+    width: 600px;
+}
