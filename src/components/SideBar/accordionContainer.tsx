@@ -3,9 +3,9 @@ import './index.scss';
 import { FiChevronDown, FiChevronLeft } from "react-icons/fi";
 
 /**
- * @description HOC: to share common functionalities that related to shopping carts,
- * @param {Array<IDelayedRoute>} delayedRoutes wrapped component
- * @param {IWeather} weather order type of product, if it is undefined, orderType should be passed into function addToShoppingCart directly
+ * @description An interaction container that can hide the content
+ * @param {string} headline used for the accordion container
+ * @param {any} wrappedContent that will be rendered when the accordion container is dropped down
  */
 
 interface AccordionContainerProps {

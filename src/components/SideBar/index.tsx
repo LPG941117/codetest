@@ -14,24 +14,22 @@ import './index.scss';
 
 
 /**
- * HOC: to share common functionalities that related to shopping carts,
- * Modes: 1. Single Mdde: only add a single product to the shopping cart at a time, orderType must be passed as a prop of withShoppingCarts;
- *        2. Multiple Mode: add more than two products to the shopping cart at a time, each orderType should be passed as a param of addToShoppingCart;
- *        so, orderType can be used to deduce which mode is working.
- * @param {Array<IDelayedRoute>} delayedRoutes wrapped component
- * @param {IWeather} weather order type of product, if it is undefined, orderType should be passed into function addToShoppingCart directly
+ * @description A sidebar that used for the showing weather information, delayed routes and ramp content
+ * @param {Array<IDelayedRoute>} delayedRoutes an array of delayed routes info
+ * @param {IWeather} weather information of weather today
+ * @param {array<number>} ramps an Array of ramps
  */
 
 interface SideBarProps {
 	delayedRoutes?: Array<IDelayedRoute>;
 	weather?: IWeather;
-	rumps?: string;
+	ramps?: string;
 }
 
 const SideBar: React.FC<SideBarProps> = ({
 	delayedRoutes,
 	weather,
-	rumps
+	ramps
 }) => {
 	const [visible, setVisible] = useState(true);
 
